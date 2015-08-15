@@ -2,12 +2,14 @@
   "name": "podium",
   "version": "1.0.0",
   "description": "Podium social network - http://pdum.xyz",
-  "main": "server.js",
-  "dependencies": {},
+  "main": "start.js",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node start.js"
   },
   "repository": {
     "type": "git",

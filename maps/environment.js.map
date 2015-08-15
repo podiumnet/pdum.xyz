@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "environment.js",
+  "sourceRoot": "../../src/server/",
+  "sources": [
+    "environment.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;EAAA,MAAM,CAAC,OAAP,GACE;IAAA,IAAA,EAAM,OAAO,CAAC,GAAG,CAAC,qBAAZ,IAAqC,IAA3C;IACA,EAAA,EAAI,OAAO,CAAC,GAAG,CAAC,mBAAZ,IAAmC,WADvC;;AADF"
+}
