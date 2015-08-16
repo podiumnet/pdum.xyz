@@ -40,7 +40,7 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 }
 .search, .search-go {
   border: 0;
-  font-family: 'Noto Sans';
+  font-family: 'Open Sans';
   font-size: 14px;
 }
 .search {
@@ -58,4 +58,20 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 }
 .search-go:hover {
   background: #ddd;
+}
+.login-signup h1 {
+  margin: 15px 0;
+}
+.login-signup .login {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+.login-signup .signup {
+  color: #fff;
+  background: rgb(15, 118, 213);
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: .8em;
 }
