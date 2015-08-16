@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<!--
+
+/*
 Podium - Copyright (C) 2015 Podium Contributors
 
 This file is part of Podium.
@@ -16,19 +16,40 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Podium.  If not, see <http://www.gnu.org/licenses/>.
--->
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>About Podium</title>
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/page_gen.js"></script>
-  </head>
-  <body>
-    <div class="content">
-      <h1>About Podium</a>
-    </div>
-    <script src="/header_gen.js"></script>
-    <script src="/footer_gen.js"></script>
-  </body>
-</html>
+ */
+
+(function() {
+  var header;
+
+  header = document.generateElement({
+    type: "header",
+    children: [
+      {
+        type: "div",
+        props: {
+          className: "logo"
+        },
+        children: []
+      }, {
+        type: "a",
+        props: {
+          innerHTML: "Log In",
+          href: "/login"
+        },
+        children: []
+      }, {
+        type: "a",
+        props: {
+          innerHTML: "Sign Up",
+          href: "/signup"
+        },
+        children: []
+      }
+    ]
+  });
+
+  document.body.prependChild(header);
+
+}).call(this);
+
+//# sourceMappingURL=../../maps/header_gen.js.map

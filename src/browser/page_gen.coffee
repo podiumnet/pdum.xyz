@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<!--
+###
 Podium - Copyright (C) 2015 Podium Contributors
 
 This file is part of Podium.
@@ -16,19 +15,25 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Podium.  If not, see <http://www.gnu.org/licenses/>.
--->
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>About Podium</title>
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/page_gen.js"></script>
-  </head>
-  <body>
-    <div class="content">
-      <h1>About Podium</a>
-    </div>
-    <script src="/header_gen.js"></script>
-    <script src="/footer_gen.js"></script>
-  </body>
-</html>
+###
+Element::copyProperties = (properties, root = @) ->
+  for prop of properties
+    if typeof prop is 'Array'
+      @copyProperties properties[prop], root[prop]
+    else
+      root[prop] = properties[prop]
+
+Element::prependChild = (child) ->
+  @insertBefore child, @firstChild
+
+Document::generateElement = (data) ->
+  if data.type is "textNode"
+    elem = @createTextNode data.text
+  else
+    elem = @createElement data.type
+    elem.copyProperties data.props
+    for i of data.children
+      child = @generateElement data.children[i]
+      elem.appendChild child
+
+  elem
