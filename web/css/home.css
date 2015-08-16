@@ -25,4 +25,8 @@
   padding: 10px 0;
   background: #fff;
   border-left: 1px solid #eee;
+  cursor: pointer;
+}
+.search-go:hover {
+  background: #ddd;
 }
