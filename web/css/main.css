@@ -42,3 +42,8 @@ a {
   color: rgb(14, 94, 168);
   text-decoration: none;
 }
+footer {
+  padding: 30px;
+  font-size: 15px;
+  text-align: center;
+}
