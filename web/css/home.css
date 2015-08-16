@@ -1,8 +1,16 @@
-.top-box {
+.box {
   width: 100%;
   padding: 50px;
-  background: rgb(15, 118, 213);
   flex-wrap: wrap;
+}
+.box.top {
+  background: rgb(15, 118, 213);
+}
+.box.about {
+  color: #222;
+}
+.box.about h1 {
+  font-size: 3em;
 }
 .centered {
   display: flex;
