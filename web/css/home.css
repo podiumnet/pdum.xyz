@@ -1,0 +1,28 @@
+.top-box {
+  width: 100%;
+  padding: 50px;
+  background: rgb(15, 118, 213);
+  flex-wrap: wrap;
+}
+.centered {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.logo {
+  width: 400px;
+}
+.search {
+  width: 300px;
+  border-radius: 20px 0 0 20px;
+  border: 0;
+  padding: 10px 10px 10px 15px;
+}
+.search-go {
+  width: 100px;
+  border-radius: 0 20px 20px 0;
+  border: 0;
+  padding: 10px 0;
+  background: #fff;
+  border-left: 1px solid #eee;
+}

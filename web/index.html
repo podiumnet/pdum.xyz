@@ -3,8 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>Podium</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/home.css">
   </head>
   <body>
-    Welcome
+    <div class="top-box">
+      <div class="centered">
+        <img class="logo" src="/images/logo-white.png">
+      </div>
+      <div class="centered">
+        <form action="/search" method="get">
+          <!-- We do this to make these inline-blocks next to each other. -->
+          <input
+            type="text" class="search"><input
+            type="submit" class="search-go" value="Search">
+        </form>
+      </div>
+    </div>
   </body>
 </html>
