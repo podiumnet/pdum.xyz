@@ -43,27 +43,27 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
       randomly generated, are stored in the user's localStorage.
        */
       socket.on('verifylegit', function(uniques) {
-        var newcode, sess;
+        var sess;
         sess = sessions.get(uniques.id, uniques.password);
         if (sess) {
           socket.session = sess;
-
-          /*
-          If this password has been used more than 10 times,
-          we make a new one for security reasons.
-           */
-          if (sess.meetups > 10) {
-            newcode = (Math.random() + Math.random() + 1).toString(36).substring(7);
-            sess.password = newcode;
-            socket.emit('seemslegit', newcode);
-            return sess.meetups = 0;
-          } else {
-            sess.meetups++;
-            return socket.emit('seemslegit');
-          }
+          return socket.emit('seemslegit');
         } else {
           return give_uniques();
         }
+      });
+      socket.on('newpassword', function() {
+
+        /*
+        We need to regenerate the password for the next use.
+        Generate a new code in base-36 (lets + nums).
+        We double up the Math.random()s for a bigger number,
+        and add one to the result to prevent a password of 0.
+         */
+        var newcode;
+        newcode = (Math.random() + Math.random() + 1).toString(36).substring(7);
+        socket.session.password = newcode;
+        return socket.emit('newpassword', newcode);
       });
       socket.on('getuniques', function() {
         return give_uniques();

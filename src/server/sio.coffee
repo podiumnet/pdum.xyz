@@ -39,19 +39,22 @@ module.exports = (http) ->
       sess = sessions.get uniques.id, uniques.password
       if sess
         socket.session = sess
-        ###
-        We need to regenerate the password for the next use.
-        Generate a new code in base-36 (lets + nums).
-        We double up the Math.random()s for a bigger number,
-        and add one to the result to prevent a password of 0.
-        ###
-        newcode =
-          (Math.random()+Math.random()+1).toString(36).substring 7
-        sess.password = newcode
-        # The client needs to know the new code.
-        socket.emit 'seemslegit', newcode
+        socket.emit 'seemslegit'
       else
         give_uniques()
+
+    socket.on 'newpassword', ->
+      ###
+      We need to regenerate the password for the next use.
+      Generate a new code in base-36 (lets + nums).
+      We double up the Math.random()s for a bigger number,
+      and add one to the result to prevent a password of 0.
+      ###
+      newcode =
+        (Math.random()+Math.random()+1).toString(36).substring 7
+      socket.session.password = newcode
+      # The client needs to know the new code.
+      socket.emit 'newpassword', newcode
 
     # If the client needs new uniques, we give them some.
     socket.on 'getuniques', ->

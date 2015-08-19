@@ -32,9 +32,20 @@ verifyLegit = ->
     id: localStorage.unique_id
     password: localStorage.id_password
 
-socket.on 'seemslegit', (data) ->
+# Here we ask the server to give us a new password.
+requestPassword = ->
+  console.log "Requested new local password."
+  socket.emit 'newpassword'
+
+socket.on 'newpassword', (password) ->
   console.log "Recieved new local password."
-  localStorage.id_password = data
+  localStorage.id_password = password
+
+socket.on 'seemslegit', (data) ->
+  # Get a new password.
+  requestPassword()
+  # Get a new password every 10 minutes.
+  setInterval requestPassword, 600000
   console.log "Client verified legitimate."
   verifiedlegit = true
   for func of boundverifies

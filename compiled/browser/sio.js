@@ -19,7 +19,7 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 (function() {
-  var boundverifies, socket, verifiedlegit, verifyLegit;
+  var boundverifies, requestPassword, socket, verifiedlegit, verifyLegit;
 
   window.socket = socket = io();
 
@@ -42,12 +42,20 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
     });
   };
 
+  requestPassword = function() {
+    console.log("Requested new local password.");
+    return socket.emit('newpassword');
+  };
+
+  socket.on('newpassword', function(password) {
+    console.log("Recieved new local password.");
+    return localStorage.id_password = password;
+  });
+
   socket.on('seemslegit', function(data) {
     var func, results;
-    if (data) {
-      console.log("Recieved new local password.");
-      localStorage.id_password = data;
-    }
+    requestPassword();
+    setInterval(requestPassword, 600000);
     console.log("Client verified legitimate.");
     verifiedlegit = true;
     results = [];
