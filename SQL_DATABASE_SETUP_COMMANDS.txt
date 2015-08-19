@@ -1,0 +1,5 @@
+#Execute these SQL commands to get your podium database ready:
+# The following command needs only to be run when the podium database doesn't
+# exist yet.
+CREATE DATABASE IF NOT EXISTS podium
+# All commands below assume that the podium database is selected.
