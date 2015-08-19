@@ -33,9 +33,8 @@ verifyLegit = ->
     password: localStorage.id_password
 
 socket.on 'seemslegit', (data) ->
-  if data
-    console.log "Recieved new local password."
-    localStorage.id_password = data
+  console.log "Recieved new local password."
+  localStorage.id_password = data
   console.log "Client verified legitimate."
   verifiedlegit = true
   for func of boundverifies

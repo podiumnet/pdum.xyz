@@ -40,22 +40,16 @@ module.exports = (http) ->
       if sess
         socket.session = sess
         ###
-        If this password has been used more than 4 times,
-        we make a new one for security reasons.
+        We need to regenerate the password for the next use.
+        Generate a new code in base-36 (lets + nums).
+        We double up the Math.random()s for a bigger number,
+        and add one to the result to prevent a password of 0.
         ###
-        if sess.meetups > 3
-          # Generate a new code in base-36 (lets + nums).
-          # We double up the Math.random()s for a bigger number,
-          # and add one to the result to prevent a password of 0.
-          newcode =
-            (Math.random()+Math.random()+1).toString(36).substring 7
-          sess.password = newcode
-          # The client needs to know the new code.
-          socket.emit 'seemslegit', newcode
-          sess.meetups = 0
-        else
-          sess.meetups++
-          socket.emit 'seemslegit'
+        newcode =
+          (Math.random()+Math.random()+1).toString(36).substring 7
+        sess.password = newcode
+        # The client needs to know the new code.
+        socket.emit 'seemslegit', newcode
       else
         give_uniques()
 
