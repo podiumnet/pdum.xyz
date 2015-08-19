@@ -20,9 +20,12 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 
 (function() {
   module.exports = function(maindir) {
-    var app, environment, express, server;
+    var app, environment, express, http, sio;
     express = require('express');
     app = express();
+    http = require('http').Server(app);
+    sio = require("./sio");
+    sio(http);
     environment = require('./environment');
     app.use(function(req, res, next) {
       res.header("Access-Control-Allow-Origin", "*");
@@ -33,7 +36,7 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
     });
     app.use(express["static"](maindir + "/web"));
     app.use(express["static"](maindir + "/compiled/browser"));
-    return server = app.listen(environment.port, environment.ip, function() {
+    return http.listen(environment.port, environment.ip, function() {
       return console.log('PODIUM SERVER Listening @ %s:%s', environment.ip, environment.port);
     });
   };

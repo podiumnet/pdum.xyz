@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "sio.js",
+  "sourceRoot": "../../src/server/",
+  "sources": [
+    "sio.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;;;;;;;;;;;;;;;;;;;AAAA;EAkBA,MAAM,CAAC,OAAP,GAAiB,SAAC,IAAD;AACf,QAAA;IAAA,OAAO,CAAC,GAAR,CAAa,wBAAb;IACA,EAAA,GAAK,OAAA,CAAQ,WAAR,CAAA,CAAqB,IAArB;WACL,EAAE,CAAC,EAAH,CAAM,YAAN,EAAoB,SAAC,MAAD;aAClB,MAAM,CAAC,EAAP,CAAU,YAAV,EAAwB,SAAA;eACtB,MAAM,CAAC,IAAP,CAAY,YAAZ,EAA0B,KAA1B;MADsB,CAAxB;IADkB,CAApB;EAHe;AAlBjB"
+}

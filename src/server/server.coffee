@@ -19,6 +19,9 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 module.exports = (maindir)->
   express = require 'express'
   app = express()
+  http = require('http').Server(app)
+  sio = require "./sio"
+  sio http
   environment = require './environment'
 
   app.use (req, res, next) ->
@@ -31,7 +34,7 @@ module.exports = (maindir)->
   app.use express.static "#{maindir}/web"
   app.use express.static "#{maindir}/compiled/browser"
 
-  server = app.listen environment.port, environment.ip, ->
+  http.listen environment.port, environment.ip, ->
 
     console.log 'PODIUM SERVER Listening @ %s:%s', environment.ip,
       environment.port
