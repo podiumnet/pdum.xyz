@@ -40,7 +40,7 @@ module.exports = (http) ->
       if sess
         socket.session = sess
         ###
-        If this password has been used more than 10 times,
+        If this password has been used more than 4 times,
         we make a new one for security reasons.
         ###
         if sess.meetups > 3
