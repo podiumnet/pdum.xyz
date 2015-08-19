@@ -20,6 +20,8 @@ module.exports = (http) ->
   console.log  "Initializing Socket.io"
   sessions = require './session_manager'
   io = require('socket.io')(http)
+  MySQLHandler = require './MySQLHandler'
+  mysqlhandler = new MySQLHandler()
 
   # When a user connects (loads a new page):
   io.on 'connection', (socket) ->
