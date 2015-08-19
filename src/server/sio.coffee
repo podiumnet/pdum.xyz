@@ -43,7 +43,7 @@ module.exports = (http) ->
         If this password has been used more than 10 times,
         we make a new one for security reasons.
         ###
-        if sess.meetups > 10
+        if sess.meetups > 5
           # Generate a new code in base-36 (lets + nums).
           # We double up the Math.random()s for a bigger number,
           # and add one to the result to prevent a password of 0.
