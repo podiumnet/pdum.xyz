@@ -19,3 +19,8 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 module.exports =
   port: process.env.OPENSHIFT_NODEJS_PORT || 8080
   ip: process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+  dbhost: process.env.OPENSHIFT_MYSQL_DB_HOST || 'localhost'
+  dbport: process.env.OPENSHIFT_MYSQL_DB_PORT || 3306
+  dbusername: process.env.OPENSHIFT_MYSQL_DB_USERNAME || process.argv[2]
+  dbpassword: process.env.OPENSHIFT_MYSQL_DB_PASSWORD || process.argv[3]
+  dbname: "podium"
