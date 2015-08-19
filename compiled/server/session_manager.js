@@ -1,4 +1,5 @@
-###
+
+/*
 Podium - Copyright (C) 2015 Podium Contributors
 
 This file is part of Podium.
@@ -15,10 +16,31 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Podium.  If not, see <http://www.gnu.org/licenses/>.
-###
-socket.on 'isloggedin', (loggedin) ->
-  console.log "Recieved logged-in status: #{loggedin}."
-  window.location.href = "/dash" if loggedin
+ */
 
-bindVerify ->
-  socket.emit 'isloggedin'
+(function() {
+  module.exports = {
+    sessions: {},
+    get: function(uniqueid, password) {
+      if (this.sessions[uniqueid] && this.sessions[uniqueid].password === password) {
+        return this.sessions[uniqueid];
+      }
+    },
+    "new": function() {
+      var newcode;
+      while (true) {
+        newcode = (Math.random() + Math.random() + 1).toString(36).substring(7);
+        if (!this.sessions[newcode]) {
+          this.sessions[newcode] = {
+            meetups: 0,
+            logged_in: false
+          };
+          return newcode;
+        }
+      }
+    }
+  };
+
+}).call(this);
+
+//# sourceMappingURL=../../maps/session_manager.js.map

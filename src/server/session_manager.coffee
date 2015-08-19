@@ -16,9 +16,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 ###
-socket.on 'isloggedin', (loggedin) ->
-  console.log "Recieved logged-in status: #{loggedin}."
-  window.location.href = "/dash" if loggedin
+module.exports =
+  sessions: {}
+  get: (uniqueid, password) ->
+    if @sessions[uniqueid] and @sessions[uniqueid].password is password
+      @sessions[uniqueid]
 
-bindVerify ->
-  socket.emit 'isloggedin'
+  new: ->
+    while true
+      newcode =
+        (Math.random()+Math.random()+1).toString(36).substring 7
+      if !@sessions[newcode]
+        @sessions[newcode] =
+          meetups: 0
+          logged_in: false
+        return newcode
