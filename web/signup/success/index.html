@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+Podium - Copyright (C) 2015 Podium Contributors
+
+This file is part of Podium.
+
+Podium is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Podium is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Podium.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Success!</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/main.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/page_gen.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Success!</h1>
+      <p>
+        It's official!
+        You are all signed up and ready to go, with you shiny new podium
+        account!
+      </p>
+      <h2>Just One Last Thing:</h2>
+      <p>
+        To make sure you signed up under your real email (which we need if you
+        ever forget your password,) we've sent you a confirmation email with a
+        link.
+        When you click that link, we'll know that you used the right email
+        address, and we'll keep your account unlocked.
+        Until that link is clicked, you can't post or 'like' other people's
+        content!
+      </p>
+      <a class="biglink" href="/dash">My Dashboard</a>
+    </div>
+    <script src="/sio.js"></script>
+    <script src="/dash_if_conn.js"></script>
+    <script src="/header_gen.js"></script>
+    <script src="/footer_gen.js"></script>
+  </body>
+</html>
