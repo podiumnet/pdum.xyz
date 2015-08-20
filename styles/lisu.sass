@@ -18,13 +18,26 @@
 @import colors
 @import measurements
 
-.li-su
-  margin: 0 auto
-  background: $darkgrey
+.lisupanel
+  margin: $uniformpadding auto
   width: 500px
   padding: $uniformpadding * 2
   border-radius: 20px
   text-align: center
+
+.error
+  @extend .lisupanel
+
+  background: rgb(222, 80, 65)
+  color: rgb(99, 0, 0)
+  display: none
+
+.error.show
+  display: block
+
+.li-su
+  @extend .lisupanel
+  background: $darkgrey
 
   h1
     text-align: center
