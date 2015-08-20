@@ -15,5 +15,33 @@
 // You should have received a copy of the GNU General Public License
 // along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 
-$maincolor: rgb(15, 118, 213)
-$darkgrey: #ddd
+@import colors
+@import measurements
+
+.li-su
+  margin: 0 auto
+  background: $darkgrey
+  width: 500px
+  padding: $uniformpadding * 2
+  border-radius: 20px
+  text-align: center
+
+  h1
+    text-align: center
+    font-size: 1.5em
+    margin: 0 0 $uniformpadding 0
+
+  input
+    width: 100%
+    border: 1px solid $darkgrey
+    padding: $uniformpadding
+    background: #fff
+    margin: $uniformpadding 0
+
+  button
+    margin: 0 auto
+    padding: $uniformpadding
+    font-size: 17px
+    background: $maincolor
+    color: #fff
+    border: 0
