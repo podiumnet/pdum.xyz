@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<!--
+
+/*
 Podium - Copyright (C) 2015 Podium Contributors
 
 This file is part of Podium.
@@ -16,26 +16,20 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Podium.  If not, see <http://www.gnu.org/licenses/>.
--->
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Dashboard</title>
-    <link rel="shortcut icon" href="/images/favicon.ico" />
-    <link rel="stylesheet" href="/main.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/page_gen.js"></script>
-  </head>
-  <body>
-    <div class="content">
-      <h1>Dashboard</h1>
-      <p>
-        Sorry, there's not much here yet!
-      </p>
-    </div>
-    <script src="/sio.js"></script>
-    <script src="/dash_if_not_conn.js"></script>
-    <script src="/header_gen.js"></script>
-    <script src="/footer_gen.js"></script>
-  </body>
-</html>
+ */
+
+(function() {
+  socket.on('isloggedin', function(loggedin) {
+    console.log("Recieved logged-in status: " + loggedin + ".");
+    if (!loggedin) {
+      return window.location.href = "/";
+    }
+  });
+
+  bindVerify(function() {
+    return socket.emit('isloggedin');
+  });
+
+}).call(this);
+
+//# sourceMappingURL=../../maps/dash_if_not_conn.js.map

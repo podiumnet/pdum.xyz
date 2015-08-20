@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "dash_if_not_conn.js",
+  "sourceRoot": "../../src/browser/",
+  "sources": [
+    "dash_if_not_conn.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;;;;;;;;;;;;;;;;;;;AAAA;EAkBA,MAAM,CAAC,EAAP,CAAU,YAAV,EAAwB,SAAC,QAAD;IACtB,OAAO,CAAC,GAAR,CAAY,6BAAA,GAA8B,QAA9B,GAAuC,GAAnD;IACA,IAA8B,CAAC,QAA/B;aAAA,MAAM,CAAC,QAAQ,CAAC,IAAhB,GAAuB,IAAvB;;EAFsB,CAAxB;;EAIA,UAAA,CAAW,SAAA;WACT,MAAM,CAAC,IAAP,CAAY,YAAZ;EADS,CAAX;AAtBA"
+}
