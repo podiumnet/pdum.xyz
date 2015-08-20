@@ -29,17 +29,19 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
   </head>
   <body>
     <div class="content">
-      <div class="error"></div>
+      <div class="error">Bad Username or Password</div>
       <div class="li-su">
         <h1>Log In</h1>
         Username:
         <input type="text" id="username">
         Password:
         <input type="password" id="password">
-        <button>Log In</button>
+        <button id="cta">Log In</button>
       </div>
     </div>
     <script src="/sio.js"></script>
+    <script src="/dash_if_conn.js"></script>
+    <script src="/login.js"></script>
     <script src="/header_gen.js"></script>
     <script src="/footer_gen.js"></script>
   </body>
