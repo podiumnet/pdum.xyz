@@ -3,3 +3,15 @@
 # exist yet.
 CREATE DATABASE IF NOT EXISTS podium
 # All commands below assume that the podium database is selected.
+CREATE TABLE `podium_users` (
+	`username` VARCHAR(20) NOT NULL,
+	`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`password` VARCHAR(128) NOT NULL DEFAULT '' COMMENT 'SHA512 Encrypted',
+	`email` VARCHAR(50) NOT NULL,
+	`email_verified` BIT(1) NOT NULL DEFAULT b'0' COMMENT '1 (true) or 0 (false)',
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX `id` (`id`),
+	UNIQUE INDEX `username` (`username`)
+)
+ENGINE=InnoDB
+;
