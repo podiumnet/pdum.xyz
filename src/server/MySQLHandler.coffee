@@ -34,13 +34,19 @@ class MySQLHandler
 
   query: (query, callback) ->
     @conn.query query, (err, a, b) ->
-      throw err if err
+      if err
+        console.error err
+        return false
       callback a, b
+      return true
 
   querySet: (query, set, callback) ->
     @conn.query query, set, (err, a, b) ->
-      throw err if err
+      if err
+        console.error err
+        return false
       callback a, b
+      return true
 
 
 

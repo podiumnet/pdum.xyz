@@ -44,18 +44,22 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
     MySQLHandler.prototype.query = function(query, callback) {
       return this.conn.query(query, function(err, a, b) {
         if (err) {
-          throw err;
+          console.error(err);
+          return false;
         }
-        return callback(a, b);
+        callback(a, b);
+        return true;
       });
     };
 
     MySQLHandler.prototype.querySet = function(query, set, callback) {
       return this.conn.query(query, set, function(err, a, b) {
         if (err) {
-          throw err;
+          console.error(err);
+          return false;
         }
-        return callback(a, b);
+        callback(a, b);
+        return true;
       });
     };
 

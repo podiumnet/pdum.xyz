@@ -20,65 +20,63 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 
 (function() {
   module.exports = function(socket, mysql) {
-    var hash, hashPassword;
+    var hash;
     hash = require('node_hash');
-    hashPassword = function(password) {};
     socket.on('login', function(data) {
-      var err, username;
+      var estat, username;
       username = mysql.escape(data.username);
-      try {
-        return mysql.query("SELECT * FROM podium_users WHERE username='" + username + "' LIMIT 1", function(rows, fields) {
-          var pwordhash;
-          if (rows.length > 0) {
-            pwordhash = hash.sha512(data.password, rows.password_salt);
-            if (pwordhash === rows.password) {
-              socket.session.logged_in = true;
-              socket.session.user_id = rows[0].id;
-              return socket.emit('loginSuccess');
-            } else {
-              return socket.emit('loginFailed');
-            }
+      estat = mysql.query("SELECT * FROM podium_users WHERE username=" + username + " LIMIT 1", function(rows, fields) {
+        var pwordhash;
+        if (rows.length > 0) {
+          pwordhash = hash.sha512(data.password, rows[0].password_salt);
+          if (pwordhash === rows[0].password) {
+            socket.session.logged_in = true;
+            socket.session.user_id = rows[0].id;
+            return socket.emit('loginSuccess');
           } else {
             return socket.emit('loginFailed');
           }
-        });
-      } catch (_error) {
-        err = _error;
+        } else {
+          return socket.emit('loginFailed');
+        }
+      });
+      if (!estat) {
         return socket.emit('loginFailed');
       }
     });
     return socket.on('signup', function(data) {
-      var email, err, pwordhash, salt, username;
+      var email, estat, pwordhash, salt, username;
       username = mysql.escape(data.username);
-      salt = ((Math.random() + Math.random() + 1) * 10000000000000000).toString(36).substring(7);
+      salt = ((Math.random() + Math.random() + 1) * 10000000000000000).toString(36);
       pwordhash = hash.sha512(data.password, salt);
       email = mysql.escape(data.email);
-      if (username.length > 20 || !(/^[a-zA-Z0-9]+$/.test(username))) {
-        return socket.emit('signupFailed', 'Username must be letters and numbers, non-empty, < 20 chars.');
-      } else if (!(/^\S+$/.test(password))) {
+      if (username.length > 20 || !(/^\S+$/.test(username))) {
+        return socket.emit('signupFailed', 'Username can\'t have spaces or tabs, or be empty, or < 20 chars.');
+      } else if (!(/^\S+$/.test(data.password))) {
         return socket.emit('signupFailed', 'Password can\'t have spaces or tabs, or be empty.');
       } else if (!(/^\S+$/.test(email))) {
         return socket.emit('signupFailed', 'Email can\'t have spaces or tabs, or be empty.');
       } else {
-        try {
-          return mysql.query("SELECT * FROM podium_users WHERE username='" + username + "' LIMIT 1", function(rows, fields) {
-            var userdata;
-            if (rows.length > 0) {
-              return socket.emit('signupFailed', 'Username Taken');
-            } else {
-              userdata = {
-                username: username,
-                password: pwordhash,
-                email: email,
-                password_salt: salt
-              };
-              return mysql.querySet("INSERT INTO podium_users SET ?", userdata, function(result) {
-                return socket.emit('signupSuccess', result.insertId);
-              });
+        estat = mysql.query("SELECT * FROM podium_users WHERE username = " + username, function(rows, fields) {
+          var userdata;
+          if (rows.length > 0) {
+            return socket.emit('signupFailed', 'Username Taken');
+          } else {
+            userdata = {
+              username: data.username,
+              password: pwordhash,
+              email: data.email,
+              password_salt: salt
+            };
+            estat = mysql.querySet("INSERT INTO podium_users SET ?", userdata, function(result) {
+              return socket.emit('signupSuccess', result.insertId);
+            });
+            if (!estat) {
+              return socket.emit('signupFailed', 'Something Weird Happened');
             }
-          });
-        } catch (_error) {
-          err = _error;
+          }
+        });
+        if (!estat) {
           return socket.emit('signupFailed', 'Something Weird Happened');
         }
       }

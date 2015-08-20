@@ -21,8 +21,8 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 (function() {
   document.querySelector("#cta").onclick = function() {
     return socket.emit('login', {
-      username: document.querySelector('#username'),
-      password: document.querySelector('#password')
+      username: document.querySelector('#username').value,
+      password: document.querySelector('#password').value
     });
   };
 
