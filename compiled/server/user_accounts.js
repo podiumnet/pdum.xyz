@@ -69,7 +69,9 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
               password_salt: salt
             };
             estat = mysql.querySet("INSERT INTO podium_users SET ?", userdata, function(result) {
-              return socket.emit('signupSuccess', result.insertId);
+              socket.session.logged_in = true;
+              socket.session.user_id = result.insertId;
+              return socket.emit('signupSuccess');
             });
             if (!estat) {
               return socket.emit('signupFailed', 'Something Weird Happened');

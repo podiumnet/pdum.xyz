@@ -63,7 +63,9 @@ module.exports = (socket, mysql) ->
             password_salt: salt
           estat = mysql.querySet "INSERT INTO podium_users SET ?", userdata,
           (result) ->
-            socket.emit 'signupSuccess', result.insertId
+            socket.session.logged_in = true
+            socket.session.user_id = result.insertId
+            socket.emit 'signupSuccess'
           socket.emit 'signupFailed', 'Something Weird Happened' if !estat
 
       # Error response
