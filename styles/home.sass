@@ -1,0 +1,77 @@
+// Podium - Copyright (C) 2015 Podium Contributors
+//
+// This file is part of Podium.
+//
+// Podium is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Podium is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Podium.  If not, see <http://www.gnu.org/licenses/>.
+
+@import colors
+
+.box
+  width: 100%
+  padding: 50px
+  flex-wrap: wrap
+
+.box.top
+  background: $maincolor
+
+.box.about
+  color: #222
+
+.box.about h1
+  font-size: 3em
+
+.centered
+  display: flex
+  justify-content: center
+  padding: 20px
+
+.logo
+  width: 400px
+
+.search, .search-go
+  border: 0
+  font-family: 'Open Sans'
+  font-size: 14px
+
+.search
+  width: 300px
+  border-radius: 20px 0 0 20px
+  padding: 11px 10px 11px 15px
+
+.search-go
+  width: 100px
+  border-radius: 0 20px 20px 0
+  padding: 10px 0
+  background: #fff
+  border-left: 1px solid #eee
+  cursor: pointer
+
+.search-go:hover
+  background: #ddd
+
+.login-signup h1
+  margin: 15px 0
+
+.login-signup .login
+  text-align: center
+  margin: 0 auto
+  display: block
+
+.login-signup .signup
+  color: #fff
+  background: $maincolor
+  text-decoration: none
+  padding: 12px
+  border-radius: 10px
+  font-size: .8em

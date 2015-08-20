@@ -11,7 +11,19 @@ module.exports = (grunt) ->
         src: ['*.coffee', '**/*.coffee']
         dest: 'compiled'
         ext: '.js'
+    sass:
+      default:
+        options:
+          style: 'compressed'
+        files: [
+            expand: true
+            cwd: 'styles'
+            src: ['*.sass']
+            dest: 'css'
+            ext: '.css'
+        ]
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-sass'
 
-  grunt.registerTask 'default', ['coffee']
+  grunt.registerTask 'default', ['coffee', 'sass']

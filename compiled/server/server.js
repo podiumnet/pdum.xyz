@@ -36,6 +36,7 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
     });
     app.use(express["static"](maindir + "/web"));
     app.use(express["static"](maindir + "/compiled/browser"));
+    app.use(express["static"](maindir + "/css"));
     return http.listen(environment.port, environment.ip, function() {
       return console.log('PODIUM SERVER Listening @ %s:%s', environment.ip, environment.port);
     });

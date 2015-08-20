@@ -33,6 +33,7 @@ module.exports = (maindir)->
 
   app.use express.static "#{maindir}/web"
   app.use express.static "#{maindir}/compiled/browser"
+  app.use express.static "#{maindir}/css"
 
   http.listen environment.port, environment.ip, ->
 
