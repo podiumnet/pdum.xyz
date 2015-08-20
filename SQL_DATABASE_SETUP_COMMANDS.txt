@@ -9,9 +9,12 @@ CREATE TABLE `podium_users` (
 	`password` VARCHAR(128) NOT NULL DEFAULT '' COMMENT 'SHA512 Encrypted',
 	`email` VARCHAR(50) NOT NULL,
 	`email_verified` BIT(1) NOT NULL DEFAULT b'0' COMMENT '1 (true) or 0 (false)',
+	`password_salt` VARCHAR(11) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`),
 	UNIQUE INDEX `id` (`id`),
 	UNIQUE INDEX `username` (`username`)
 )
+COLLATE='utf8_general_ci'
 ENGINE=InnoDB
+AUTO_INCREMENT=2
 ;
