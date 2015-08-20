@@ -16,34 +16,41 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 ###
-footer = document.generateElement
-  type: "footer"
-  children: [
-      type: "textNode"
-      text: "Copyright \u00A9 2015 Podium Contributors"
-    ,
-      type: "br"
-    ,
+bindLoginStatus ->
+  footerprops =
+    type: "footer"
+    children: [
+        type: "textNode"
+        text: "Copyright \u00A9 2015 Podium Contributors"
+      ,
+        type: "br"
+      ,
+        type: "a"
+        props:
+          href: "/about",
+          innerHTML: "About"
+    ]
+  if !window.logged_in
+    headerprops.children.push
       type: "a"
       props:
-        href: "/about",
-        innerHTML: "About"
-    ,
-      type: "textNode"
-      text: " | "
-    ,
-      type: "a"
-      props:
-        href: "/login",
         innerHTML: "Log In"
-    ,
-      type: "textNode"
-      text: " | "
-    ,
+        href: "/login"
+      children: []
+    headerprops.children.push
       type: "a"
       props:
-        href: "/signup",
         innerHTML: "Sign Up"
-  ]
+        href: "/signup"
+      children: []
+  else
+    headerprops.children.push
+      type: "a"
+      props:
+        innerHTML: "Log Out"
+        href: "/logout"
+      children: []
 
-document.body.appendChild footer
+  footer = document.generateElement footerprops
+
+  document.body.appendChild footer

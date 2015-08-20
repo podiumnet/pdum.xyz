@@ -19,37 +19,50 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 (function() {
-  var header;
-
-  header = document.generateElement({
-    type: "header",
-    children: [
-      {
-        type: "a",
-        props: {
-          className: "logo",
-          href: "/"
-        },
-        children: []
-      }, {
+  bindLoginStatus(function() {
+    var header, headerprops;
+    headerprops = {
+      type: "header",
+      children: [
+        {
+          type: "a",
+          props: {
+            className: "logo",
+            href: "/"
+          }
+        }
+      ]
+    };
+    if (!window.logged_in) {
+      headerprops.children.push({
         type: "a",
         props: {
           innerHTML: "Log In",
           href: "/login"
         },
         children: []
-      }, {
+      });
+      headerprops.children.push({
         type: "a",
         props: {
           innerHTML: "Sign Up",
           href: "/signup"
         },
         children: []
-      }
-    ]
+      });
+    } else {
+      headerprops.children.push({
+        type: "a",
+        props: {
+          innerHTML: "Log Out",
+          href: "/logout"
+        },
+        children: []
+      });
+    }
+    header = document.generateElement(headerprops);
+    return document.body.prependChild(header);
   });
-
-  document.body.prependChild(header);
 
 }).call(this);
 

@@ -19,15 +19,10 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 (function() {
-  socket.on('isloggedin', function(loggedin) {
-    console.log("Recieved logged-in status: " + loggedin + ".");
-    if (loggedin) {
+  bindLoginStatus(function() {
+    if (window.logged_in) {
       return window.location.href = "/dash";
     }
-  });
-
-  bindVerify(function() {
-    return socket.emit('isloggedin');
   });
 
 }).call(this);

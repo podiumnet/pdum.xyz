@@ -16,26 +16,36 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 ###
-header = document.generateElement
-  type: "header"
-  children: [
+bindLoginStatus ->
+  headerprops =
+    type: "header"
+    children: [
       type: "a"
       props:
         className: "logo"
         href: "/"
-      children: []
-    ,
+    ]
+  if !window.logged_in
+    headerprops.children.push
       type: "a"
       props:
         innerHTML: "Log In"
         href: "/login"
       children: []
-    ,
+    headerprops.children.push
       type: "a"
       props:
         innerHTML: "Sign Up"
         href: "/signup"
       children: []
-  ]
+  else
+    headerprops.children.push
+      type: "a"
+      props:
+        innerHTML: "Log Out"
+        href: "/logout"
+      children: []
 
-document.body.prependChild header
+  header = document.generateElement headerprops
+
+  document.body.prependChild header
