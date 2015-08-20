@@ -25,9 +25,10 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
     type: "header",
     children: [
       {
-        type: "div",
+        type: "a",
         props: {
-          className: "logo"
+          className: "logo",
+          href: "/"
         },
         children: []
       }, {

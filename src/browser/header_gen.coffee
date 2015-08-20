@@ -19,9 +19,10 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 header = document.generateElement
   type: "header"
   children: [
-      type: "div"
+      type: "a"
       props:
         className: "logo"
+        href: "/"
       children: []
     ,
       type: "a"
