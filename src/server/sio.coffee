@@ -21,10 +21,13 @@ module.exports = (http) ->
   sessions = require './session_manager'
   io = require('socket.io')(http)
   MySQLHandler = require './MySQLHandler'
-  mysqlhandler = new MySQLHandler()
+  mysql = new MySQLHandler()
+  accounthandler = require './user_accounts'
+  hash = require 'node_hash'
 
   # When a user connects (loads a new page):
   io.on 'connection', (socket) ->
+    accounthandler socket, mysql
     give_uniques = ->
       sessionid = sessions.new()
       sess = sessions.sessions[sessionid]

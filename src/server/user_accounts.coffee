@@ -1,0 +1,72 @@
+###
+Podium - Copyright (C) 2015 Podium Contributors
+
+This file is part of Podium.
+
+Podium is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Podium is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Podium.  If not, see <http://www.gnu.org/licenses/>.
+###
+module.exports = (socket, mysql) ->
+  hash = require 'node_hash'
+  hashPassword = (password) ->
+
+  socket.on 'login', (data) ->
+    username = mysql.escape data.username
+    try
+      mysql.query "SELECT * FROM podium_users
+      WHERE username='#{username}' LIMIT 1", (rows, fields) ->
+        if rows.length > 0
+          pwordhash = hash.sha512 data.password, rows.password_salt
+          if pwordhash is rows.password
+            socket.session.logged_in = true
+            socket.session.user_id = rows[0].id
+            socket.emit 'loginSuccess'
+          else
+            socket.emit 'loginFailed'
+        else
+          socket.emit 'loginFailed'
+    catch err
+      socket.emit 'loginFailed'
+
+  socket.on 'signup', (data) ->
+    username = mysql.escape data.username
+    salt = ((Math.random()+Math.random()+1)*10000000000000000)
+      .toString(36).substring 7
+    pwordhash = hash.sha512 data.password, salt
+    email = mysql.escape data.email
+    if username.length > 20 or not (/^[a-zA-Z0-9]+$/.test username)
+      socket.emit 'signupFailed',
+      'Username must be letters and numbers, non-empty, < 20 chars.'
+    else if not (/^\S+$/.test password)
+      socket.emit 'signupFailed',
+      'Password can\'t have spaces or tabs, or be empty.'
+    else if not (/^\S+$/.test email)
+      socket.emit 'signupFailed',
+      'Email can\'t have spaces or tabs, or be empty.'
+    else
+      try
+        mysql.query "SELECT * FROM podium_users
+        WHERE username='#{username}' LIMIT 1", (rows, fields) ->
+          if rows.length > 0
+            socket.emit 'signupFailed', 'Username Taken'
+          else
+            userdata =
+              username: username
+              password: pwordhash
+              email: email
+              password_salt: salt
+            mysql.querySet "INSERT INTO podium_users SET ?", userdata,
+            (result) ->
+              socket.emit 'signupSuccess', result.insertId
+      catch err
+        socket.emit 'signupFailed', 'Something Weird Happened'

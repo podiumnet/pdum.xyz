@@ -20,14 +20,17 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 
 (function() {
   module.exports = function(http) {
-    var MySQLHandler, io, mysqlhandler, sessions;
+    var MySQLHandler, accounthandler, hash, io, mysql, sessions;
     console.log("Initializing Socket.io");
     sessions = require('./session_manager');
     io = require('socket.io')(http);
     MySQLHandler = require('./MySQLHandler');
-    mysqlhandler = new MySQLHandler();
+    mysql = new MySQLHandler();
+    accounthandler = require('./user_accounts');
+    hash = require('node_hash');
     return io.on('connection', function(socket) {
       var give_uniques;
+      accounthandler(socket, mysql);
       give_uniques = function() {
         var sess, sessionid;
         sessionid = sessions["new"]();

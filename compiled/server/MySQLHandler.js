@@ -37,12 +37,25 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
       this.conn.connect();
     }
 
+    MySQLHandler.prototype.escape = function(value) {
+      return this.conn.escape(value);
+    };
+
     MySQLHandler.prototype.query = function(query, callback) {
-      return this.conn.query(query, function(err, rows, fields) {
+      return this.conn.query(query, function(err, a, b) {
         if (err) {
           throw err;
         }
-        return callback(fields);
+        return callback(a, b);
+      });
+    };
+
+    MySQLHandler.prototype.querySet = function(query, set, callback) {
+      return this.conn.query(query, set, function(err, a, b) {
+        if (err) {
+          throw err;
+        }
+        return callback(a, b);
       });
     };
 

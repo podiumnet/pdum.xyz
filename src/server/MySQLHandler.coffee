@@ -29,10 +29,18 @@ class MySQLHandler
 
     @conn.connect()
 
+  escape: (value) ->
+    @conn.escape value
+
   query: (query, callback) ->
-    @conn.query query, (err, rows, fields) ->
+    @conn.query query, (err, a, b) ->
       throw err if err
-      callback fields
+      callback a, b
+
+  querySet: (query, set, callback) ->
+    @conn.query query, set, (err, a, b) ->
+      throw err if err
+      callback a, b
 
 
 
