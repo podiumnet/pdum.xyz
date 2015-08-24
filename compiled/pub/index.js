@@ -20,7 +20,29 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 
 (function() {
   module.exports = function(ops) {
+    var logo, logocent, srccent, srcfrm, srctxt, topbox;
     ops.title("Podium");
+    ops.style("/main.css");
+    ops.style("/home.css");
+    topbox = ops.body.element("div");
+    topbox.attr("class", "top box");
+    logocent = topbox.element("div");
+    logocent.attr("class", "centered");
+    logo = logocent.element("img");
+    logo.attr("class", "logo");
+    logo.attr("src", "/images/logo-white.png");
+    srccent = topbox.element("div");
+    srccent.attr("class", "centered");
+    srcfrm = srccent.element("form");
+    srcfrm.attr("action", "/search");
+    srcfrm.attr("method", "get");
+    srctxt = srcfrm.element("input");
+    srctxt.attr("type", "text");
+    srctxt.attr("class", "search");
+    srctxt = srcfrm.element("input");
+    srctxt.attr("type", "submit");
+    srctxt.attr("class", "search-go");
+    srctxt.attr("value", "Search");
     return ops.generate();
   };
 
