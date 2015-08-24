@@ -7,7 +7,8 @@
     "express": "^4.13.3",
     "mysql": "^2.8.0",
     "node_hash": "^0.2.0",
-    "socket.io": "^1.3.6"
+    "socket.io": "^1.3.6",
+    "forrx": "podiumnet/forrx"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

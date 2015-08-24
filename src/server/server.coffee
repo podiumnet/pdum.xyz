@@ -20,6 +20,7 @@ module.exports = (maindir)->
   express = require 'express'
   app = express()
   http = require('http').Server(app)
+  forrx = require "forrx"
   sio = require "./sio"
   sio http
   environment = require './environment'
@@ -31,9 +32,9 @@ module.exports = (maindir)->
     res.header 'Access-Control-Allow-Headers', 'Content-Type'
     next()
 
-  app.use express.static "#{maindir}/web"
   app.use express.static "#{maindir}/compiled/browser"
   app.use express.static "#{maindir}/css"
+  app.use forrx "compiled/pub"
 
   http.listen environment.port, environment.ip, ->
 
