@@ -19,45 +19,55 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 (function() {
-  var footer;
-
-  footer = document.generateElement({
-    type: "footer",
-    children: [
-      {
-        type: "textNode",
-        text: "Copyright \u00A9 2015 Podium Contributors"
-      }, {
-        type: "br"
-      }, {
+  bindLoginStatus(function() {
+    var footer, footerprops;
+    footerprops = {
+      type: "footer",
+      children: [
+        {
+          type: "textNode",
+          text: "Copyright \u00A9 2015 Podium Contributors"
+        }, {
+          type: "br"
+        }, {
+          type: "a",
+          props: {
+            href: "/about",
+            innerHTML: "About"
+          }
+        }
+      ]
+    };
+    if (!window.logged_in) {
+      headerprops.children.push({
         type: "a",
         props: {
-          href: "/about",
-          innerHTML: "About"
-        }
-      }, {
-        type: "textNode",
-        text: " | "
-      }, {
+          innerHTML: "Log In",
+          href: "/login"
+        },
+        children: []
+      });
+      headerprops.children.push({
         type: "a",
         props: {
-          href: "/login",
-          innerHTML: "Log In"
-        }
-      }, {
-        type: "textNode",
-        text: " | "
-      }, {
+          innerHTML: "Sign Up",
+          href: "/signup"
+        },
+        children: []
+      });
+    } else {
+      headerprops.children.push({
         type: "a",
         props: {
-          href: "/signup",
-          innerHTML: "Sign Up"
-        }
-      }
-    ]
+          innerHTML: "Log Out",
+          href: "/logout"
+        },
+        children: []
+      });
+    }
+    footer = document.generateElement(footerprops);
+    return document.body.appendChild(footer);
   });
-
-  document.body.appendChild(footer);
 
 }).call(this);
 
