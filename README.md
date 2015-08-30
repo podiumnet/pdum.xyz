@@ -1,7 +1,5 @@
 # Podium
-The podium social network is the social network of everything.
-See [our about page](http://pdum.xyz/about) for details.
-Homepage: http://pdum.xyz
+Podium is a great social network. It is dedicated to being awesome. http://pdum.xyz is our site.
 
 ## Contribute to Podium
 We will evaluate contributions submitted as pull requests, and accept those that
