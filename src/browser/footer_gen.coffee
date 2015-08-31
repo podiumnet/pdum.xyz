@@ -1,5 +1,5 @@
 ###
-Podium - Copyright (C) 2015 Podium Contributors
+Podium - Copyright (C) 2015 Podium
 
 This file is part of Podium.
 
@@ -21,7 +21,7 @@ bindLoginStatus ->
     type: "footer"
     children: [
         type: "textNode"
-        text: "Copyright \u00A9 2015 Podium Contributors"
+        text: "Copyright \u00A9 2015 Podium"
       ,
         type: "br"
       ,
