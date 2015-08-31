@@ -1,4 +1,4 @@
-<% res.location '/' if !@util.sessions.verify() %>
+<% @res.location '/' if !@util.sessions.verify() %>
 <!DOCTYPE html>
 <!--
 Podium - Copyright (C) 2015 Podium Contributors
