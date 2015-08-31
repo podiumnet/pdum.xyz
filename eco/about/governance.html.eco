@@ -1,4 +1,4 @@
-<% loggedin = @util.sessions.verify() %>
+<% loggedin = @util.sessions.verify @req, @res %>
 <!DOCTYPE html>
 <!--
 Podium - Copyright (C) 2015 Podium Contributors

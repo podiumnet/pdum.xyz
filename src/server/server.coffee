@@ -18,6 +18,7 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 ###
 module.exports = (maindir)->
   express = require 'express'
+  cookieParser = require 'cookie-parser'
   app = express()
   http = require('http').Server(app)
   ecostat = require 'ecostat'
@@ -29,6 +30,7 @@ module.exports = (maindir)->
     password: environment.dbpassword
     database: environment.dbname
 
+  app.use cookieParser()
   app.use express.static "#{maindir}/compiled/browser"
   app.use express.static "#{maindir}/css"
   app.use express.static "#{maindir}/web"

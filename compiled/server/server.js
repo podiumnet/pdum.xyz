@@ -20,8 +20,9 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 
 (function() {
   module.exports = function(maindir) {
-    var app, ecostat, environment, express, http, psnutils;
+    var app, cookieParser, ecostat, environment, express, http, psnutils;
     express = require('express');
+    cookieParser = require('cookie-parser');
     app = express();
     http = require('http').Server(app);
     ecostat = require('ecostat');
@@ -33,6 +34,7 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
       password: environment.dbpassword,
       database: environment.dbname
     });
+    app.use(cookieParser());
     app.use(express["static"](maindir + "/compiled/browser"));
     app.use(express["static"](maindir + "/css"));
     app.use(express["static"](maindir + "/web"));
