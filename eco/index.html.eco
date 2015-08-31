@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Podium</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/home.css">
+  </head>
+  <body>
+    <div class="top box">
+      <div class="centered">
+        <img class="logo" src="/images/logo-white.png">
+      </div>
+      <div class="centered">
+        <form action="/search" method="get">
+          <input type="text" class="search"><input
+          type="submit" class="search-go" value="Search">
+        </form>
+      </div>
+    </div>
+    <div class="about box">
+      <div class="centered">
+        <div class="login-signup">
+          <h1>
+            <a href="/signup" class="signup">Sign Up</a> for Social Everything!
+          </h1>
+          <a href="/login" class="login">Or Log In</a>
+        </div>
+      </div>
+    </div>
+    <footer>
+      Copyright &copy; 2015 Podium<br/>
+      <a href="/about">About</a> |
+      <a href="/login">Log In</a> |
+      <a href="/signup">Sign Up</a>
+    </footer>
+  </body>
+</html>

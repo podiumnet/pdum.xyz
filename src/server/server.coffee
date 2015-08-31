@@ -20,7 +20,7 @@ module.exports = (maindir)->
   express = require 'express'
   app = express()
   http = require('http').Server(app)
-  forrx = require "forrx"
+  ecostat = require 'ecostat'
   environment = require './environment'
 
   app.use (req, res, next) ->
@@ -32,8 +32,8 @@ module.exports = (maindir)->
 
   app.use express.static "#{maindir}/compiled/browser"
   app.use express.static "#{maindir}/css"
-  app.use forrx "#{maindir}/compiled/pub"
   app.use express.static "#{maindir}/web"
+  app.use ecostat "#{maindir}/eco"
 
   http.listen environment.port, environment.ip, ->
 
