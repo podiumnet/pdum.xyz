@@ -1,3 +1,4 @@
+<% res.location '/dash' if @util.sessions.verify() %>
 <!DOCTYPE html>
 <!--
 Podium - Copyright (C) 2015 Podium Contributors
@@ -24,12 +25,13 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="/lisu.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/page_gen.js"></script>
   </head>
   <body>
     <div class="content">
-      <div class="error">Bad Username or Password</div>
+      <div class="error show">
+        <b>Notice:</b>
+        Podium's login/signup features are closed temporarily for an upgrade.
+      </div>
       <div class="li-su">
         <h1>Log In</h1>
         Username:
@@ -39,11 +41,5 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
         <button id="cta">Log In</button>
       </div>
     </div>
-    <script src="/sio.js"></script>
-    <script src="/loginstatus.js"></script>
-    <script src="/dash_if_conn.js"></script>
-    <script src="/login.js"></script>
-    <script src="/header_gen.js"></script>
-    <script src="/footer_gen.js"></script>
   </body>
 </html>
