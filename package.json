@@ -4,10 +4,11 @@
   "description": "Podium social network - http://pdum.xyz",
   "main": "start.js",
   "dependencies": {
-    "express": "^4.13.3",
     "ecostat": "podiumnet/ecostat",
+    "express": "^4.13.3",
     "mysql": "^2.8.0",
     "node_hash": "^0.2.0",
+    "podium-data-backend": "podiumnet/podium-data-backend",
     "socket.io": "^1.3.6"
   },
   "devDependencies": {
