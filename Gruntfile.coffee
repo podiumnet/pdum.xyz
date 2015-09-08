@@ -1,6 +1,8 @@
 module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
+    coffeelint:
+      app: ["src/**/*.coffee"]
     coffee:
       default:
         options:
@@ -25,5 +27,6 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-sass'
+  grunt.loadNpmTasks 'grunt-coffeelint'
 
-  grunt.registerTask 'default', ['coffee', 'sass']
+  grunt.registerTask 'default', ['coffee', 'sass', 'coffeelint']
