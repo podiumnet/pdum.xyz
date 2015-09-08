@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/podiumnet/podium.svg?branch=master)](https://travis-ci.org/podiumnet/podium)
+[![Stories in Ready](https://badge.waffle.io/podiumnet/podium.svg?label=ready&title=Ready)](http://waffle.io/podiumnet/podium)
 # Podium
 Podium is a great social network dedicated to bringing all online social activity to one place.
 We are the one network to rule them all.
