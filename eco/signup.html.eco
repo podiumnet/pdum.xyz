@@ -1,6 +1,7 @@
+<% @res.location '/dash' if @util.sessions.verify @req, @res %>
 <!DOCTYPE html>
 <!--
-Podium - Copyright (C) 2015 Podium Contributors
+Podium - Copyright (C) 2015 Podium
 
 This file is part of Podium.
 
@@ -20,23 +21,27 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Dashboard</title>
+    <title>Sign Up</title>
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/main.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/page_gen.js"></script>
+    <link rel="stylesheet" href="/lisu.css">
   </head>
   <body>
     <div class="content">
-      <h1>Dashboard</h1>
-      <p>
-        Sorry, there's not much here yet!
-      </p>
+      <div class="error show">
+        <b>Notice:</b>
+        Podium's login/signup features are closed temporarily for an upgrade.
+      </div>
+      <div class="li-su">
+        <h1>Sign Up</h1>
+        Username:
+        <input type="text" id="username">
+        Password:
+        <input type="password" id="password">
+        Email:
+        <input type="email" id="email">
+        <button id="cta">Sign Up</button>
+      </div>
     </div>
-    <script src="/sio.js"></script>
-    <script src="/loginstatus.js"></script>
-    <script src="/dash_if_not_conn.js"></script>
-    <script src="/header_gen.js"></script>
-    <script src="/footer_gen.js"></script>
   </body>
 </html>

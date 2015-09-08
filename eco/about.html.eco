@@ -1,6 +1,7 @@
+<% loggedin = @util.sessions.verify @req, @res %>
 <!DOCTYPE html>
 <!--
-Podium - Copyright (C) 2015 Podium Contributors
+Podium - Copyright (C) 2015 Podium
 
 This file is part of Podium.
 
@@ -23,8 +24,6 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
     <title>About Podium</title>
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/main.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/page_gen.js"></script>
   </head>
   <body>
     <div class="content">
@@ -56,9 +55,5 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
           our organization</a>.
       </p>
     </div>
-    <script src="/sio.js"></script>
-    <script src="/loginstatus.js"></script>
-    <script src="/header_gen.js"></script>
-    <script src="/footer_gen.js"></script>
   </body>
 </html>

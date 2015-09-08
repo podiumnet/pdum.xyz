@@ -1,6 +1,6 @@
 
 /*
-Podium - Copyright (C) 2015 Podium Contributors
+Podium - Copyright (C) 2015 Podium
 
 This file is part of Podium.
 
@@ -20,23 +20,25 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
 
 (function() {
   module.exports = function(maindir) {
-    var app, ecostat, environment, express, http;
+    var app, cookieParser, ecostat, environment, express, http, psnutils;
     express = require('express');
+    cookieParser = require('cookie-parser');
     app = express();
     http = require('http').Server(app);
     ecostat = require('ecostat');
     environment = require('./environment');
-    app.use(function(req, res, next) {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header('Access-Control-Allow-Credentials', true);
-      res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-      res.header('Access-Control-Allow-Headers', 'Content-Type');
-      return next();
+    psnutils = require('podium-data-backend')({
+      host: environment.dbhost,
+      port: environment.dbport,
+      user: environment.dbusername,
+      password: environment.dbpassword,
+      database: environment.dbname
     });
+    app.use(cookieParser());
     app.use(express["static"](maindir + "/compiled/browser"));
     app.use(express["static"](maindir + "/css"));
     app.use(express["static"](maindir + "/web"));
-    app.use(ecostat(maindir + "/eco"));
+    app.use(ecostat(maindir + "/eco", psnutils));
     return http.listen(environment.port, environment.ip, function() {
       return console.log('PODIUM SERVER Listening @ %s:%s', environment.ip, environment.port);
     });

@@ -1,6 +1,6 @@
 
 /*
-Podium - Copyright (C) 2015 Podium Contributors
+Podium - Copyright (C) 2015 Podium
 
 This file is part of Podium.
 
@@ -26,7 +26,7 @@ along with Podium.  If not, see <http://www.gnu.org/licenses/>.
       children: [
         {
           type: "textNode",
-          text: "Copyright \u00A9 2015 Podium Contributors"
+          text: "Copyright \u00A9 2015 Podium"
         }, {
           type: "br"
         }, {
