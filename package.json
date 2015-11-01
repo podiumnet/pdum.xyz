@@ -2,13 +2,10 @@
   "name": "podium",
   "version": "1.0.0",
   "description": "Podium network website - http://pdum.xyz",
-  "main": "start.js",
+  "main": "server.js",
   "dependencies": {
     "coffee-script": "^1.10.0",
     "express": "^4.13.3"
-  },
-  "scripts": {
-    "start": "node start.js"
   },
   "repository": {
     "type": "git",
