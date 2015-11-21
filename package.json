@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/podiumnet/pdum.xyz/issues"
   },
-  "homepage": "https://github.com/podiumnet/pdum.xyz#readme"
+  "homepage": "https://github.com/podiumnet/pdum.xyz#readme",
+  "halfmast": false
 }
